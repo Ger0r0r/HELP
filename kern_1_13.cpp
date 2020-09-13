@@ -1,9 +1,12 @@
 #include <stdio.h>
 
+
 const int MaxC = 1000;
 
 int main ()
 {
+    FILE* stih;
+    stih = fopen ("stih.txt", "r");
     int i      = 0,
         k      = 0,
         chg       ,
@@ -12,12 +15,12 @@ int main ()
 
     for (i = 0; i < MaxC; i++)
         Word[i] = 0;
-    while ((i = getchar()) != EOF)
+    while ((i = getc(stih)) != EOF)
     {
         if (((i >= 'A') && (i <= 'Z')) ||
         ((i >= 'a') && (i <= 'z')) ||
-        ((i >= 'À') && (i <= 'ï')) ||
-        ((i >= 'ð') && (i <= '¸'))
+        ((i >= 128) && (i <= 175)) ||
+        ((i >= 224) && (i <= 241))
         )
         {
              Word[k]++;
